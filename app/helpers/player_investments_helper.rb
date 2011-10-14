@@ -1,0 +1,2 @@
+module PlayerInvestmentsHelper
+end

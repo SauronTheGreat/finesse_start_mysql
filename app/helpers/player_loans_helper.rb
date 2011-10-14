@@ -1,0 +1,2 @@
+module PlayerLoansHelper
+end

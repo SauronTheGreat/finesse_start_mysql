@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  environmental_parameter_id: 1
+  decision_parameter_id: 1
+  mathematical_model_variable_id: 1
+
+two:
+  environmental_parameter_id: 1
+  decision_parameter_id: 1
+  mathematical_model_variable_id: 1

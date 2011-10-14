@@ -1,0 +1,2 @@
+module DealerCategoriesHelper
+end

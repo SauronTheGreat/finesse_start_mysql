@@ -1,0 +1,62 @@
+<h1>Welcome To The Finesse Portal</h1>
+<!--The user has signed in-->
+<% if current_user %>
+    <h3>You have Signed In as <%= current_user.username %></h3>
+
+    <!--Displaying roles-->
+    <% if current_user.superadmin %>
+        You are a  Super Admin
+    <% elsif current_user.admin %>
+        You are a   Admin
+    <% elsif current_user.facilitator %>
+        You are a  Professor
+    <% else %>
+        You are a Student
+    <% end %>
+
+    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to "Sign In", new_user_session_path %>
+<% end %>
+<br>
+<br>
+<hr>
+
+<% if current_user %>
+<!--Superadmin View-->
+<% if current_user.superadmin %>
+    <%= link_to "Manage Mathematical Models", mathematical_models_path %> <br>
+    <%= link_to "Manage Markets",markets_path %><br>
+    <%= link_to "Manage Decision Parameters",decision_parameters_path %><br>
+    <%= link_to "Manage National Dealers",dealers_path %><br>
+    <%= link_to "Manage Products",products_path %><br>
+    <%= link_to "Manage Raw Materials",raw_materials_path %><br>
+
+
+
+
+
+
+
+ <% elsif current_user.admin %>
+    <%= link_to "Manage Clients",clients_path %><br>
+    <%= link_to "Manage Facilitators",facilitators_path %><br>
+    <%= link_to "Manage Environmental Parameters",environmental_parameters_path %><br>
+    <%= link_to "Manage Decision Parameters",decision_parameters_path %><br>
+
+
+
+
+
+
+
+<% end %>
+<% end %>
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mathematical_model_id: 1
+  constant_name: MyString
+
+two:
+  mathematical_model_id: 1
+  constant_name: MyString

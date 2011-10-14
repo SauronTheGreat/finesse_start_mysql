@@ -1,0 +1,2 @@
+module MathematicalModelsHelper
+end

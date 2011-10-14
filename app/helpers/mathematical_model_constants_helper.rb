@@ -1,0 +1,2 @@
+module MathematicalModelConstantsHelper
+end

@@ -1,0 +1,29 @@
+<%= form_for(@market_distance) do |f| %>
+  <% if @market_distance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@market_distance.errors.count, "error") %> prohibited this market_distance from being saved:</h2>
+
+      <ul>
+      <% @market_distance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :source_market_id %><br />
+    <%= f.number_field :source_market_id %>
+  </div>
+  <div class="field">
+    <%= f.label :distance_market_id %><br />
+    <%= f.number_field :distance_market_id %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br />
+    <%= f.number_field :distance %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

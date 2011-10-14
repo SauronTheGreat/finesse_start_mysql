@@ -1,0 +1,311 @@
+As a SUPERADMIN
+--I should be able to CRUD decision parameters for an agent class
+--I should be able to CRUD prefrences for an agent
+--I should be able to CRUD product parameters
+--I should be able to CRUD market
+--I can CRUD national dealers
+--I should be able to CRUD mathematical models
+--I should be able to define formulae to be used for relation between enviornmental_paramenters and decision parameters
+
+-As a STUDENT
+--I should be able to login
+--I should be able to download round 1 default data sheets
+--I should be able to see the deadlines and briefings in round1
+--I should be able to upload my decisions
+--I should have historical data available with me.
+--I should have tools to help me take decsions
+--I should be able to see the leaderboards if allowed
+--I should see my competitors data(the AI BOTS)
+--I should receive inputs from different departments in each round
+--I should be able to view my comments
+
+Decision examples:
+--price
+
+
+-As a PROFESSOR
+--I should be able to login in(Authenticate)
+--I should see statistical and graphical results
+--I should be able to compare historical results with current results
+--I should be able to see historical results
+--I should be able to request admin for a change(simple mail facility)
+--I should be able to make comments to a particular team(public or private)
+--I should be able to manage facilitators groups
+--I should be able to manage students and student groups
+--I should be able to specify seed range for the enviornmental parameters.
+--I should be able to specify speed and direction for movement of enviornmental parameters
+--I should be able to specify product composition for a particular simulation
+--I should be able to specify freight cost for logistics purpose
+--I should be able to specify weight_per_unit of the final product as well as raw materials used.
+--I should be able to select size for players seeding
+--I should be able to select AI player type and user player type
+--I should be able to define cost of factory and C
+--I should be able to CRUD case studies
+--I should be able to decide HRINCENTIVES to be used
+
+
+
+
+
+-As an ADMIN
+--I should be able to manage user(CRUD)
+--I shoould be able to CRUD facilitators
+--I should be able to CRUD clients
+--I should be able to see all the world agent classes and select the required out of them for simulation
+--I should be able to specify number of agents that will be used for each agent class
+--I should be able to set the level of AI used.
+--I should be able to decide what parameters will be taken into consideration for decsion making
+--I should be able to CRUD enviornmental parameters and select formulae for how they affect decision parameters
+--I should be able to define product parameter values for the product in the simulation
+--I should be able to define consumer_category proportions in the market
+--I should be able to decide maxplayers(maximum players playing !)
+
+
+ENVIRONMENTAL PARAMETERS
+ functions :
+--Its a random value within a range specified by the professor
+--Enviormental parameters can be hard coded for each round by professor
+--Environmental parameters can move along random paths with direction and speed (professor input )
+--Environmental parameters can move basis other enviornmental parameters(system calculation)
+
+Examples:
+gdp
+interest rate
+inflation
+share prices
+crude prices
+commodity prices
+
+
+
+
+DECISION PARAMETERS:
+functions:
+--It takes enviornmental parameters as input
+--Relationship with enviornmental parameters can be based  on one of many formulae to be decided by superadmin
+
+
+
+
+AGENT CLASS:
+funcionS:
+--It should be able to self generate its entities based on inputs by admin and system calculation
+--Each entity  can take certain decisions
+--Decision parameters are input to decision making process.
+--Player data is input to decision making process
+--To take a decision an entity evaluates the decision parameters and player data.
+--Decision making process depends on level of AI used
+--It should be able to view decisions of all agents and give a aggregated data
+
+Examples:
+MEDIA
+DEALERS--
+VENDORS
+CONSUMERS--
+WORKERS--
+SHAREHOLDERS
+LENDERS
+GOVERNMENT
+
+
+
+
+Examples of decisions which agent can take:
+--buy/sell
+--index for each player in market
+--probability of action
+--cease/comes to existence
+--efficiency/productivity
+--affect enviornmental parameters
+
+
+--->COMPANY:
+
+SALES:
+This will be calculated based on offtake  in the market which will be based on summation of players brand(s) sales across the consumer agents and price of the product(s)
+
+PRODUCTION
+--It will take input as quantity sold as decided by system
+--Product_composition(prof_input) X Quantity_sold(system) X weight_per_unit(prof_input)=raw material consumption
+--raw_material_cost=raw material consumption X raw_material_price(prof_input)
+--raw_material_price is based on enviornmental parameters(admin_input)
+--Inbound Logistics cost = raw_material_consumption X distance to relevant market(system) X freight cost(for all raw materials)
+--Outbound logistics cost=Quantity_sold_per_market X freight cost X weight_per_unit X distance_to_relevant_market
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+Tuesday 11 October 2011 10:10:00 AM IST
+
+
+EMPLOYEE_CATEGORY:
+--Each category will have base salary,base effect_on_sales,base effect_on_quality_cost system generated(or prof_input)
+
+
+EMPLOYEE:
+--Each employee has a certian efficiency which when multiplied with base gives you final cost and effect .
+--Employee efficiency depends on happiness quotient
+--happiness quotient is a function of salary,category ,performance of the company(PROF AND SYSTEM),media index,avg_happiness_quotient in other competitors and  hr incentives(admin_input)
+--Each employee has a cost that is salary +  quality cost(system)
+--Salary is dependent on employee  efficiency and base salary
+
+
+HRINCENTIVES:
+--Each hr incentive has a certain cost  and certain base effect on employee
+--It will be decided by professor
+
+
+Employee HR Incentive effect:
+--Each employee reacts differently to different HRINCENTIVES.
+
+
+FACTORY:
+--Each factory has certain number of employees per shift(SYSTEM)
+--A factory can have 1/2/3 shifts decided by system
+--It has certain distanc‎e to each of the market as calculated by system
+--It has a certain cost to build as calculated by system
+--It has certain cost to run as calculated by system
+--It has a certain capacity as calculated by system
+--It has production per unit time as calculated by system
+
+
+
+MARKET:
+--It has a name
+--It has catchment of dealers and/or catchment of vendors as calculated by system
+--It should be able to create dealers and vendors as calculated by system
+--It has proportions of consumer category as calculated by system
+
+
+
+DEALER:
+--Each dealer has a catchment of consumers as calculated by system and professor
+--each dealer has a desired commission as calculated by system
+--desired commission is a function of catchment
+--each dealer has a category as calculated by system
+--each dealer has a name
+--each  dealer has a push index for each brand as calculated by system
+--push index is a function of channel incentives(player),prefrence for channel incentives
+--final commission per national dealer is a function of effect of sales of sales employees , brand power,desired commission,base commission , consumer catchment
+--Each dealer has a consumer_catchment as calculated by system
+--Dealer creates his consumers
+
+
+VENDOR
+--Each vendor has a name
+--Each vendor has a market_id
+--Each vendor has a raw material he/she supplies
+
+
+CONSUMERS:
+--each consumer has a category
+--each consumer has a dealer_id
+--each consumer has a personal taste
+--each consumer will take decision to buy/not buy a production
+--purchase decision is a function of probability of purchase
+--brand selection is a function of brand power, dealer push,price and personal taste
+--Post purchase, a random toggle is generated which either increases or decreases personal taste for that brand
+--probability of purchase is a function of category , decision parameters
+--each consumer has media prefrences
+--brand power is a funcion of media impact and media prefrences for each player
+--Media prefrences is function of category
+
+
+CONSUMERS_CATEGORY:
+--It has name
+--it has base brand selection parameter ranges
+--It has media prefrences
+
+
+MEDIA:
+--It has a name
+--it has a cost
+--it has impact
+
+
+
+
+PLAYER FINANCIALS:
+--It has seed data based on size
+--for the first n rounds, all players are AI players and in (n+1)th round game starts.
+--income = sales(quantity sold) X price for all brands
+--COGS = production_cost accross all factories
+--Employee_cost = sum of salaries
+--Employee_welfare_cost = cost of HRINCENTIVES
+--SG&A = cost_of_media + cost_of_channel_incentives
+--Overheads = x% of (COGS + SG&A)
+--Depriciation = x% of (factory_cost-C)
+--Interest = Interest_rate(enviornmental parameter)X borrowing for all  loans
+--Tax=tax_rateXPBT
+
+
+
+LOANS:
+--It has type
+--It has a tenure
+--It has an interest rate
+
+
+PLAYER_LOANS:
+--It has amount(player)
+--It has loan_id
+--It has a max_amt which is a fucntion of player_financial
+
+INVESTMENT:
+--It has name
+--It has type
+--It has ROI which can be fixed or function of enviornmental_paramenters
+
+
+PLAYER_INVESTMENT:
+--It has an amt(decided by the player)
+--It has an investment_id
+
+
+
+INVENTORY:
+--It is x% of total_sales (which is calculated by the system)
+
+
+FIXED_ASSETS:
+--Cost of factories (historical data and then calculated by the system)
+--Accumulated_Depriciation(prof_input)
+--corporate fixed assets is a function of number_of_employees
+
+
+CASH:
+--It cannot go below 0
+
+
+
+
+AI PLAYER TYPE:
+--It has a name
+--It has a size
+--It has a brand dealer price prefrence
+--It has a prefred consumer segment
+
+
+
+CASE STUDIES:
+--consists of rounds with max_round(prof_input)
+--consists of players with maxplayers(admin_input)
+--has a name
+--has a description given by professor
+
+
+ROUNDS:
+--Has value for enviornmental_parameters specified by admin
+
+EXPENSES:
+--It has a name
+
+
+EXPENSES OPTIONS:
+--It has a value
+--It has expense_id

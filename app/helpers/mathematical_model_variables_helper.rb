@@ -1,0 +1,2 @@
+module MathematicalModelVariablesHelper
+end

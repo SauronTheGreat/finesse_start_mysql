@@ -1,0 +1,33 @@
+<%= form_for(@simulation) do |f| %>
+  <% if @simulation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@simulation.errors.count, "error") %> prohibited this simulation from being saved:</h2>
+
+      <ul>
+      <% @simulation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :facilitator_id %><br />
+    <%= f.number_field :facilitator_id %>
+  </div>
+  <div class="field">
+    <%= f.label :max_players %><br />
+    <%= f.number_field :max_players %>
+  </div>
+  <div class="field">
+    <%= f.label :max_rounds %><br />
+    <%= f.number_field :max_rounds %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

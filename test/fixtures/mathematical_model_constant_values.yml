@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mathematical_model_constant_id: 1
+  value: 1
+  decision_parameter_id: 1
+
+two:
+  mathematical_model_constant_id: 1
+  value: 1
+  decision_parameter_id: 1

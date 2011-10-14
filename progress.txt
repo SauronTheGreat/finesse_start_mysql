@@ -1,0 +1,57 @@
+--The roles are done and all tables have been created
+--The superadmin can log in and "manage mathematical model"
+--When a new model is created, he will be taken to name constants page and then name variable name and then to root path
+--Superadmin can now CRUD markets
+--superadmin can CRUD Overall decision parameters .he can only give name
+
+------------------------------------------------------------------------------------------------------------
+
+Decision Parameters:
+
+The superadmin will set name for decision parameter .
+When The admin logs in, he can see the list of all decision parameters and set its properties.
+--he can set the mathematical model he wants to use.
+--he can set values of constants used in that mathematical model.
+--he can set values of variables used in that mathematical model and link it to enviornmental_parameters
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------
+Market:
+
+The superadmin can CRUD Markets and specify the dealer and vendor catchment.
+Actual objects are not created at that time.
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+Dealers:
+
+The superadmin can CRUD national dealers and specify the consumer catchment and desired commission and rest will be done either by player or by the system when game starts
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+mathematical model:
+
+The superadmin can CRUD namathematical models and specify the constants and variables name and the formula which is used.
+------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------
+Product parameters:
+
+
+the superadmin can now CRUD products and raw materials.
+he can also set parameters for a particular product
+------------------------------------------------------------------------------------------------------------
