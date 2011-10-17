@@ -21,6 +21,8 @@
 
 
 
+
+
 @user=User.create!(:email=>"facilitator@finesse.com",:first_name=>"normal",:last_name=>"facilitator",:username=>"facilitator",:password=>"finesse1",:password_confirmation=>"finesse1",:admin=>false,:super_admin=>false,:facilitator=>true)
 @user.superadmin=false
 @user.admin=false
@@ -28,3 +30,5 @@
 @user.save!
 
 
+@user=User.find_by_username("facilitator")
+Facilitator.create!(:user_id=>@user.id,:client_id=>1)

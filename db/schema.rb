@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014064524) do
+ActiveRecord::Schema.define(:version => 20111017054816) do
 
   create_table "brand_selection_parameters", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20111014064524) do
     t.integer  "players"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "facilitator_id"
   end
 
   create_table "clients", :force => true do |t|
@@ -118,14 +119,29 @@ ActiveRecord::Schema.define(:version => 20111014064524) do
     t.datetime "updated_at"
   end
 
+  create_table "expense_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "expenses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "number_of_options"
+    t.integer  "expense_type_id"
+    t.integer  "source_id"
+  end
+
+  create_table "facilitator_groups", :force => true do |t|
+    t.integer  "facilitator_group_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "facilitators", :force => true do |t|
-    t.string   "name"
     t.integer  "user_id"
     t.integer  "client_id"
     t.datetime "created_at"
@@ -141,6 +157,18 @@ ActiveRecord::Schema.define(:version => 20111014064524) do
     t.integer  "cost_to_run"
     t.integer  "capacity"
     t.integer  "production_time_per_unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hrincentives", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "impacts", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,7 +199,7 @@ ActiveRecord::Schema.define(:version => 20111014064524) do
 
   create_table "market_distances", :force => true do |t|
     t.integer  "source_market_id"
-    t.integer  "distance_market_id"
+    t.integer  "target_market_id"
     t.integer  "distance"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -234,7 +262,22 @@ ActiveRecord::Schema.define(:version => 20111014064524) do
   create_table "media", :force => true do |t|
     t.string   "name"
     t.integer  "cost"
-    t.integer  "impact"
+    t.integer  "impact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_id"
+  end
+
+  create_table "media_plan_details", :force => true do |t|
+    t.integer  "media_plan_id"
+    t.integer  "media_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "media_plans", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -290,11 +333,43 @@ ActiveRecord::Schema.define(:version => 20111014064524) do
     t.datetime "updated_at"
   end
 
+  create_table "simulation_decision_parameters", :force => true do |t|
+    t.integer  "simulation_id"
+    t.integer  "decision_parameter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "simulation_markets", :force => true do |t|
+    t.integer  "simulation_id"
+    t.integer  "market_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "simulations", :force => true do |t|
     t.string   "name"
     t.integer  "facilitator_id"
     t.integer  "max_players"
     t.integer  "max_rounds"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "freight_cost"
+    t.integer  "weight_per_unit"
+    t.integer  "product_id"
+    t.integer  "case_study_id"
+  end
+
+  create_table "student_groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "facilitator_group_id"
+    t.integer  "case_study_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "units", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

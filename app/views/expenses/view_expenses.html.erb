@@ -1,0 +1,10 @@
+<h1>Listing <%= @expense_type.name %> expenses</h1>
+
+<ul>
+  <% @expenses.each do |expense| %>
+  <li>
+    <%= expense.name %>
+
+  </li>
+         <% end %>
+</ul>

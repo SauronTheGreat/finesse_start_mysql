@@ -44,6 +44,7 @@ class FactoriesController < ApplicationController
 
     respond_to do |format|
       if @factory.save
+        #when the factory is saved, the corresponding expense will be created...with help of cod in model
         format.html { redirect_to @factory, notice: 'Factory was successfully created.' }
         format.json { render json: @factory, status: :created, location: @factory }
       else

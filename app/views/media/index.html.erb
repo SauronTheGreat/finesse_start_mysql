@@ -5,6 +5,8 @@
     <th>Name</th>
     <th>Cost</th>
     <th>Impact</th>
+    <th>Unit</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +16,9 @@
   <tr>
     <td><%= medium.name %></td>
     <td><%= medium.cost %></td>
-    <td><%= medium.impact %></td>
+    <td><%= medium.impact_id %></td>
+    <td><%= medium.unit_id %></td>
+
     <td><%= link_to 'Show', medium %></td>
     <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
     <td><%= link_to 'Destroy', medium, confirm: 'Are you sure?', method: :delete %></td>

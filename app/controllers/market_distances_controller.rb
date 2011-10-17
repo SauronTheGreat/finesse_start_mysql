@@ -24,7 +24,10 @@ class MarketDistancesController < ApplicationController
   # GET /market_distances/new
   # GET /market_distances/new.json
   def new
-    @market_distance = MarketDistance.new
+    @market=Market.find(params[:market_id])
+    @count=Market.all.count-1
+    @market_distances=Array.new(@count){MarketDistance.new}
+    #@market_distance = MarketDistance.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +43,18 @@ class MarketDistancesController < ApplicationController
   # POST /market_distances
   # POST /market_distances.json
   def create
-    @market_distance = MarketDistance.new(params[:market_distance])
+   # @market_distance = MarketDistance.new(params[:market_distance])
+
+     @market_distances = params[:market_distances].values.collect { |distance| MarketDistance.new(distance) }
+
+       @market_distances.each do |md|
+         md.save!
+       end
 
     respond_to do |format|
-      if @market_distance.save
-        format.html { redirect_to @market_distance, notice: 'Market distance was successfully created.' }
+      if @market_distances.all?(&:valid?)
+        format.html {redirect_to root_path}
+        #format.html { redirect_to @market_distance, notice: 'Market distance was successfully created.' }
         format.json { render json: @market_distance, status: :created, location: @market_distance }
       else
         format.html { render action: "new" }

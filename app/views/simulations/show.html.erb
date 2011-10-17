@@ -7,7 +7,7 @@
 
 <p>
   <b>Facilitator:</b>
-  <%= @simulation.facilitator_id %>
+  <%=User.find(Facilitator.find(@simulation.facilitator_id).user_id).username %>
 </p>
 
 <p>
@@ -16,10 +16,62 @@
 </p>
 
 <p>
+  <b>Product Used:</b>
+  <%= Product.find(@simulation.product_id).name %>
+</p>
+
+<p>
+  <b>Freight Cost</b>
+  <%= @simulation.freight_cost %>
+</p>
+
+<p>
+  <b>Weight Per Unit</b>
+  <%= @simulation.weight_per_unit %>
+</p>
+
+<p>
   <b>Max rounds:</b>
   <%= @simulation.max_rounds %>
 </p>
 
+<p>
+  <b>Markets</b>
+  <ul>
+    <% @markets.each do |market| %>
+    <li><%= Market.find(market.market_id).name %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+
+
+
+
+<p>
+  <b>Decision Parameters</b>
+  <ul>
+    <% @decision_parameters.each do |parameter| %>
+    <li><%= DecisionParameter.find(parameter.decision_parameter_id).name %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+<p>
+  <b>Case Study </b>
+
+    <% @simulation.case_study_id %>
+</p>
+
+
+
+
 
 <%= link_to 'Edit', edit_simulation_path(@simulation) %> |
-<%= link_to 'Back', simulations_path %>
+<%= link_to 'Back', simulations_path %> |
+
+<%= link_to 'Set Factories', new_simulation_market_path(:simulation_id=>@simulation.id) %>|
+<%= link_to 'Set Decision Parameters', new_simulation_decision_parameter_path(:simulation_id=>@simulation.id) %>
+

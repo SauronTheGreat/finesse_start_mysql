@@ -8,6 +8,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @markets.each do |market| %>
@@ -17,6 +18,10 @@
     <td><%= market.catchment_of_vendors %></td>
     <td><%= link_to 'Show', market %></td>
     <td><%= link_to 'Edit', edit_market_path(market) %></td>
+    <td><%= link_to 'Set Distances', new_market_distance_path(:market_id=>market.id) %></td>
+    <td><%= link_to 'View Distances', view_distances_path(:market_id=>market.id) %></td>
+
+
     <td><%= link_to 'Destroy', market, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>

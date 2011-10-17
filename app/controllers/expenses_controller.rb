@@ -44,7 +44,9 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
+        #now we redirect to enter the value of all the expense options
+        format.html {redirect_to new_expense_option_path(:expense_id=>@expense.id)}
+      #  format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
         format.json { render json: @expense, status: :created, location: @expense }
       else
         format.html { render action: "new" }
@@ -60,7 +62,8 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.update_attributes(params[:expense])
-        format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
+          format.html {redirect_to new_expense_option_path(:expense_id=>@expense.id)}
+        #format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -79,5 +82,12 @@ class ExpensesController < ApplicationController
       format.html { redirect_to expenses_url }
       format.json { head :ok }
     end
+  end
+
+  def view_expenses
+    @expense_type=ExpenseType.find(params[:expense_type])
+    @expenses=@expense_type.expenses
+
+
   end
 end

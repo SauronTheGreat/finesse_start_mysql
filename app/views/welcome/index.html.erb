@@ -23,14 +23,40 @@
 <hr>
 
 <% if current_user %>
-<!--Superadmin View-->
-<% if current_user.superadmin %>
-    <%= link_to "Manage Mathematical Models", mathematical_models_path %> <br>
-    <%= link_to "Manage Markets",markets_path %><br>
-    <%= link_to "Manage Decision Parameters",decision_parameters_path %><br>
-    <%= link_to "Manage National Dealers",dealers_path %><br>
-    <%= link_to "Manage Products",products_path %><br>
-    <%= link_to "Manage Raw Materials",raw_materials_path %><br>
+    <!--Superadmin View-->
+    <% if current_user.superadmin %>
+        <%= link_to "Manage Mathematical Models", mathematical_models_path %> <br>
+        <%= link_to "Manage Markets", markets_path %><br>
+        <%= link_to "Manage Decision Parameters", decision_parameters_path %><br>
+        <%= link_to "Manage National Dealers", dealers_path %><br>
+        <%= link_to "Manage Products", products_path %><br>
+        <%= link_to "Manage Raw Materials", raw_materials_path %><br>
+        <%= link_to "Manage Market Distances", markets_path %>  <br>
+        <%= link_to "Manage Factories", factories_path %><br>
+        <%= link_to "Manage Expense Types", expense_types_path %><br>
+        <%= link_to "My Expenses", expenses_path %><br>
+        <%= link_to "Manage Media", media_path %> <br>
+        <%= link_to "Manage Media Units", units_path %><br>
+        <%= link_to "Manage Media Impacts", impacts_path %><br>
+
+        `
+        <!--admin view-->
+    <% elsif current_user.admin %>
+        <%= link_to "Manage Clients", clients_path %><br>
+        <%= link_to "Manage Facilitators", facilitators_path %><br>
+        <%= link_to "Manage Environmental Parameters", environmental_parameters_path %><br>
+        <%= link_to "Manage Decision Parameters", decision_parameters_path %><br>
+        <%= link_to "Manage HR Incentives", hrincentives_path %><br>
+        <%= link_to "Manage Media Plans", media_plans_path %>
+
+
+
+        <!--facilitator view-->
+    <% elsif current_user.facilitator %>
+        <%= link_to "Manage My Facilitator Groups", facilitator_groups_path %><br>
+        <%= link_to "Manage My Case Studies", case_studies_path %><br>
+        <%= link_to "Manage My Simulations", simulations_path %><br>
+        <%= link_to "View Expenses", expense_types_path %>
 
 
 
@@ -38,19 +64,10 @@
 
 
 
- <% elsif current_user.admin %>
-    <%= link_to "Manage Clients",clients_path %><br>
-    <%= link_to "Manage Facilitators",facilitators_path %><br>
-    <%= link_to "Manage Environmental Parameters",environmental_parameters_path %><br>
-    <%= link_to "Manage Decision Parameters",decision_parameters_path %><br>
 
 
 
-
-
-
-
-<% end %>
+    <% end %>
 <% end %>
 
 

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :market_id %><br />
-    <%= f.number_field :market_id %>
+    <%= f.select :market_id ,Market.all.collect{|m|[m.name,m.id]}%>
   </div>
   <div class="field">
     <%= f.label :number_of_shifts %><br />

@@ -66,7 +66,7 @@ MATHEMATICAL_MODEL_VARIABLE
 
 MATHEMATICAL_MODEL_CONSTANT_VALUE
 --mathematical_model_constant_id
---value
+--value  format.html {redirect_to new_expense_option_path(:expense_id=>@expense.id)}
 --decision_parameter_id
 
 
@@ -285,7 +285,7 @@ EXPENSE_OPTIONS:
 ROUND_ENVIRONMENTAL_PARAMETER:
 --round_id
 --enviornmental_paramenter_id
-------------------------------------------------------------------------------------------------
+
 PRODUCT:
 --name
 
@@ -296,3 +296,31 @@ PRODUCT_PARAMETER:
 --raw_material_id
 --value
 --product_id
+
+
+FACILITATOR_GROUP:
+--facilitator_id
+--name
+
+STUDENT_GROUP:
+--facilitator_group_id
+--name
+--case_study_id
+
+
+this is a class which helps us to fix factories used in a particular simulation
+SIMULATION_MARKETS:
+--simulation_id
+--market_id
+
+HRINCENTIVES
+--name
+------------------------------------------------------------------------------------------------
+
+There is some changes in the way we treat media.
+Media table has name,impact_id,cost,unit_id.
+There is a unit table
+There is an impact table
+There is a media plan table which has a name
+There is a media_plan_details table with plan_id,media_id and amount
+The amount is in units and cost can be calculated from media table

@@ -2,6 +2,8 @@ class CaseStudiesController < ApplicationController
   # GET /case_studies
   # GET /case_studies.json
   def index
+   # @facilitator=Facilitator.find_by_user_id(current_user.id)
+    #@case_studies=@facilitator.case_studies
     @case_studies = CaseStudy.all
 
     respond_to do |format|
@@ -24,6 +26,8 @@ class CaseStudiesController < ApplicationController
   # GET /case_studies/new
   # GET /case_studies/new.json
   def new
+
+    @facilitator=Facilitator.find_by_user_id(current_user.id)
     @case_study = CaseStudy.new
 
     respond_to do |format|

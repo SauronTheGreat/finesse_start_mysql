@@ -80,4 +80,8 @@ class MarketsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def view_distances
+    @market=Market.find_by_source_market_id(params[:market_id])
+  end
 end

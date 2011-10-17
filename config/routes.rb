@@ -1,4 +1,26 @@
 FinesseStartMysql::Application.routes.draw do
+  resources :media_plan_details
+
+  resources :media_plans
+
+  resources :impacts
+
+  resources :units
+
+  resources :expense_types
+
+  resources :hrincentives
+
+  resources :simulation_decision_parameters
+
+  resources :simulation_markets
+
+  resources :simulation_factories
+
+  resources :student_groups
+
+  resources :facilitator_groups
+
   resources :product_parameters
 
   resources :raw_materials
@@ -86,6 +108,7 @@ FinesseStartMysql::Application.routes.draw do
  match "set_variable_values"=>'decision_parameters#set_variable_values'
   match 'details'=>'decision_parameters#view_details'
  match 'view_parameters'=>'products#view_parameters'
+  match 'view_expenses'=>'expenses#view_expenses'
 
 
 

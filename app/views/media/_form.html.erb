@@ -20,9 +20,16 @@
     <%= f.number_field :cost %>
   </div>
   <div class="field">
-    <%= f.label :impact %><br />
-    <%= f.number_field :impact %>
+    <%= f.label :impact_id %><br />
+    <%= f.select :impact_id ,Impact.all.collect{|impact|[impact.name,impact.id]}%>
   </div>
+
+  <div class="field">
+    <%= f.label :unit_id %><br />
+    <%= f.select :unit_id ,Unit.all.collect{|unit|[unit.name,unit.id]}%>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

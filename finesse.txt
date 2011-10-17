@@ -6,6 +6,7 @@ As a SUPERADMIN
 --I can CRUD national dealers
 --I should be able to CRUD mathematical models
 --I should be able to define formulae to be used for relation between enviornmental_paramenters and decision parameters
+--I should be able to define distances between markets
 
 -As a STUDENT
 --I should be able to login
@@ -144,7 +145,7 @@ Tuesday 11 October 2011 10:10:00 AM IST
 
 
 EMPLOYEE_CATEGORY:
---Each category will have base salary,base effect_on_sales,base effect_on_quality_cost system generated(or prof_input)
+--Each category will have base salary,base_effect_on_sales,base effect_on_quality_cost system generated(or prof_input)
 
 
 EMPLOYEE:

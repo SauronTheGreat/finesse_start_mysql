@@ -2,7 +2,9 @@ class SimulationsController < ApplicationController
   # GET /simulations
   # GET /simulations.json
   def index
-    @simulations = Simulation.all
+    @facilitator=Facilitator.find_by_user_id(current_user.id)
+
+    @simulations = @facilitator.simulations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +16,8 @@ class SimulationsController < ApplicationController
   # GET /simulations/1.json
   def show
     @simulation = Simulation.find(params[:id])
+    @decision_parameters=@simulation.simulation_decision_parameters
+    @markets=@simulation.simulation_markets
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,6 +28,8 @@ class SimulationsController < ApplicationController
   # GET /simulations/new
   # GET /simulations/new.json
   def new
+    @facilitator=Facilitator.find_by_user_id(current_user.id)
+
     @simulation = Simulation.new
 
     respond_to do |format|

@@ -55,3 +55,44 @@ Product parameters:
 the superadmin can now CRUD products and raw materials.
 he can also set parameters for a particular product
 ------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------
+Markets:
+The super admin can create the markets and fix distances between two markets
+------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------
+Factories:
+Superadmin can CRUD factories and admin and facilitator can view it.
+a corresponding entry is made in expenses table and number of options can be specified
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------
+Simulation:
+
+facilitator can CRUD simulations and select all the markets to be used in the simulation
+Once a market is selected, factory is automatically selected.
+He can also set the decision parameters be used in the simulations
+he can add freight cost, weight_per_unit and product used in the simulation
+
+------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------
+HRINCENTIVES
+The admin can CRUD the hrincentives.
+a corresponding entry is made in the expense table and he/she can specify the options and its values
+The facilitator can view the expenses and select what he wants to use for which round
+
+------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------
+MEDIA:
+the superadmin can create diffferent media and associate cost /unit and impact with the media.
+Then the admin can create a media plan and associate different media and amount of units of that media.
+Thus, the prof/student can see all plans and select whatever they want
+------------------------------------------------------------------------------------------------------------

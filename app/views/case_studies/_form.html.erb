@@ -27,6 +27,8 @@
     <%= f.label :players %><br />
     <%= f.number_field :players %>
   </div>
+
+    <%= f.hidden_field :facilitator_id,:value=>@facilitator.id %>
   <div class="actions">
     <%= f.submit %>
   </div>

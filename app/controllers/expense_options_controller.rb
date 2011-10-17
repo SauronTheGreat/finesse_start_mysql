@@ -24,7 +24,9 @@ class ExpenseOptionsController < ApplicationController
   # GET /expense_options/new
   # GET /expense_options/new.json
   def new
-    @expense_option = ExpenseOption.new
+    @expense=Expense.find(params[:expense_id])
+    @expense_options=Array.new(@expense.number_of_options){ExpenseOption.new}
+    #@expense_option = ExpenseOption.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +42,18 @@ class ExpenseOptionsController < ApplicationController
   # POST /expense_options
   # POST /expense_options.json
   def create
-    @expense_option = ExpenseOption.new(params[:expense_option])
+   # @expense_option = ExpenseOption.new(params[:expense_option])
+    @expense_options = params[:expense_options].values.collect { |option| ExpenseOption.new(option) }
+
+         @expense_options.each do |eo|
+           eo.save!
+         end
+
 
     respond_to do |format|
-      if @expense_option.save
-        format.html { redirect_to @expense_option, notice: 'Expense option was successfully created.' }
+      if @expense_options.all?(&:valid?)
+        format.html {redirect_to root_path        }
+        #format.html { redirect_to @expense_option, notice: 'Expense option was successfully created.' }
         format.json { render json: @expense_option, status: :created, location: @expense_option }
       else
         format.html { render action: "new" }
