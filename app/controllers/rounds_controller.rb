@@ -2,7 +2,8 @@ class RoundsController < ApplicationController
   # GET /rounds
   # GET /rounds.json
   def index
-    @rounds = Round.all
+    @simulation=Simulation.find(params[:simulation_id])
+    @rounds = @simulation.rounds
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +81,6 @@ class RoundsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
 end

@@ -50,7 +50,7 @@ Decision examples:
 
 -As an ADMIN
 --I should be able to manage user(CRUD)
---I shoould be able to CRUD facilitators
+--I should be able to CRUD facilitators
 --I should be able to CRUD clients
 --I should be able to see all the world agent classes and select the required out of them for simulation
 --I should be able to specify number of agents that will be used for each agent class
@@ -145,7 +145,7 @@ Tuesday 11 October 2011 10:10:00 AM IST
 
 
 EMPLOYEE_CATEGORY:
---Each category will have base salary,base_effect_on_sales,base effect_on_quality_cost system generated(or prof_input)
+--Each category will have base salary,base_effect_on_sales,base_effect_on_quality_cost system generated(or prof_input)
 
 
 EMPLOYEE:
@@ -215,6 +215,7 @@ CONSUMERS:
 --each consumer has media prefrences
 --brand power is a funcion of media impact and media prefrences for each player
 --Media prefrences is function of category
+--if personal taste is 1 then the final brand which he chooses depends only upon his choice and if its 0, then brand power,dealer push and price comes into picture
 
 
 CONSUMERS_CATEGORY:

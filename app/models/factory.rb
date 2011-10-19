@@ -1,9 +1,11 @@
 class Factory < ActiveRecord::Base
 
-  after_save :create_factory_expense
-  def create_factory_expense
-    @expense_type=ExpenseType.find_by_name("Factory")
+  has_many :employees
 
-    Expense.create_expense(@expense_type.id,name)
-  end
+  #after_save :create_factory_expense
+  #def create_factory_expense
+  #  @expense_type=ExpenseType.find_by_name("Factory")
+  #
+  #  Expense.create_expense(@expense_type.id,name)
+  #end
 end

@@ -1,5 +1,66 @@
-<h1>New round_environmental_parameter</h1>
+<div style="width: 50%">
+  <h1>New round_environmental_parameter</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', round_environmental_parameters_path %>
+
+<%= form_for(@round_environmental_parameter) do |f| %>
+  <% if @round_environmental_parameter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@round_environmental_parameter.errors.count, "error") %> prohibited this round_environmental_parameter from being saved:</h2>
+
+      <ul>
+      <% @round_environmental_parameter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.hidden_field :round_id,:value=>@round.id %>
+
+  <div class="field">
+    <%= f.label :environmental_parameter_id %><br />
+    <%= f.select :environmental_parameter_id,@environmental_parameter_list %>
+  </div>
+
+<div class="field">
+    <%= f.label :amount %><br />
+    <%= f.number_field :amount %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div style="margin-left: 50%">
+
+  <ul>
+    <% @included_parameters.each do |parameter| %>
+    <li><%= EnvironmentalParameter.find(parameter.id).name %></li>
+    <% end %>
+    </ul>
+
+
+  <%= link_to 'Done', rounds_path(:simulation_id=>@round.simulation_id) %>
+</div>

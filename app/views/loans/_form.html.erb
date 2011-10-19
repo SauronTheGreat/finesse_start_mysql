@@ -12,16 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :tenure %><br />
-    <%= f.number_field :tenure %>
-  </div>
-  <div class="field">
-    <%= f.label :interest_rate %><br />
-    <%= f.number_field :interest_rate %>
+    <%= f.label :loan_type_id %><br />
+    <%= f.select :loan_type_id,LoanType.all.collect{|type|[type.name,type.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>

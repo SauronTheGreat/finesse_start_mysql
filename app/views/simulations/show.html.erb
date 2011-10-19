@@ -37,10 +37,16 @@
 
 <p>
   <b>Markets</b>
+<% if @markets.count==0 %>
+    <p>No markets selected yet</p>
+    <% else %>
   <ul>
+
     <% @markets.each do |market| %>
     <li><%= Market.find(market.market_id).name %></li>
     <% end %>
+    <% end %>
+
   </ul>
 </p>
 
@@ -52,8 +58,12 @@
 <p>
   <b>Decision Parameters</b>
   <ul>
+    <% if @decision_parameters.count==0 %>
+    <p>No Decision Parameter selected yet </p>
+        <% else %>
     <% @decision_parameters.each do |parameter| %>
     <li><%= DecisionParameter.find(parameter.decision_parameter_id).name %></li>
+            <% end %>
     <% end %>
   </ul>
 </p>
@@ -62,7 +72,7 @@
 <p>
   <b>Case Study </b>
 
-    <% @simulation.case_study_id %>
+    <%=  @simulation.case_study_id %>
 </p>
 
 
@@ -72,6 +82,7 @@
 <%= link_to 'Edit', edit_simulation_path(@simulation) %> |
 <%= link_to 'Back', simulations_path %> |
 
-<%= link_to 'Set Factories', new_simulation_market_path(:simulation_id=>@simulation.id) %>|
+<%= link_to 'Set Markets', new_simulation_market_path(:simulation_id=>@simulation.id) %>|
 <%= link_to 'Set Decision Parameters', new_simulation_decision_parameter_path(:simulation_id=>@simulation.id) %>
+<%= link_to "Proceed for Round Data Population",rounds_path(:simulation_id=>@simulation.id) %>
 

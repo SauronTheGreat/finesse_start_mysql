@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Name</th>
+
     <th>Number</th>
     <th></th>
     <th></th>
@@ -11,15 +11,20 @@
 
 <% @rounds.each do |round| %>
   <tr>
-    <td><%= round.name %></td>
+
     <td><%= round.number %></td>
     <td><%= link_to 'Show', round %></td>
     <td><%= link_to 'Edit', edit_round_path(round) %></td>
     <td><%= link_to 'Destroy', round, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to "Populate Expenses",new_round_expense_path(:round_id=>round.id) %></td>
+    <td><%= link_to "Populate Investments",new_round_investment_path(:round_id=>round.id) %></td>
+    <td><%= link_to "Populate Environmental Parameters",new_round_environmental_parameter_path(:round_id=>round.id) %></td>
+    <td><%= link_to "Populate Loan Details",new_round_loan_path(:round_id=>round.id) %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Round', new_round_path %>
+

@@ -24,7 +24,17 @@ class RoundEnvironmentalParametersController < ApplicationController
   # GET /round_environmental_parameters/new
   # GET /round_environmental_parameters/new.json
   def new
+    @round=Round.find(params[:round_id])
     @round_environmental_parameter = RoundEnvironmentalParameter.new
+
+    @included_parameters=@round.round_environmental_parameters
+    @included_parameters_ids=Array.new
+    @included_parameters.each do |parameter|
+      @included_parameters_ids << parameter.id
+    end
+
+    @environmental_parameter_list=EnvironmentalParameter.all.collect{|parameter| if @included_parameters_ids.include?(parameter.id)==false then [parameter.name,parameter.id] end}.compact
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +54,8 @@ class RoundEnvironmentalParametersController < ApplicationController
 
     respond_to do |format|
       if @round_environmental_parameter.save
-        format.html { redirect_to @round_environmental_parameter, notice: 'Round environmental parameter was successfully created.' }
+        format.html {redirect_to new_round_environmental_parameter_path(:round_id=>@round_environmental_parameter.round_id)}
+       # format.html { redirect_to @round_environmental_parameter, notice: 'Round environmental parameter was successfully created.' }
         format.json { render json: @round_environmental_parameter, status: :created, location: @round_environmental_parameter }
       else
         format.html { render action: "new" }

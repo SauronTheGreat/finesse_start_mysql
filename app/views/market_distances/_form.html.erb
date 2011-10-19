@@ -1,15 +1,30 @@
-<%= form_tag :action => 'create' %>
-<% @market_distances.each_with_index do |distance, index| %>
-    <%= fields_for "market_distances[#{index}]", distance do |f| %>
+<% if @list_of_markets.count == 0 %>
 
-        <%= f.hidden_field :source_market_id, :value=>@market.id %>
-        <%= f.select :target_market_id, Market.all.collect { |market| if market!=@market then [market.name, market.id]  else next end }.compact %>
-        <%= f.text_field :distance %>
-        <br>
-        <br>
+    <h3>All The distances have been set...</h3>
+
+<% else %>
+
+    <%= form_tag :action => 'create' %>
+    <% @market_distances.each_with_index do |distance, index| %>
+
+        <%= fields_for "market_distances[#{index}]", distance do |f| %>
 
 
+            <%= f.hidden_field :source_market_id, :value=>@market.id %>
+
+
+
+
+            <%= f.select :target_market_id, @list_of_markets %>
+            <%= f.text_field :distance %>
+
+
+            <br>
+            <br>
+
+
+        <% end %>
     <% end %>
-<% end %>
-<%= submit_tag %>
+    <%= submit_tag %>
 
+<% end %>

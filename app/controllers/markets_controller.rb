@@ -82,6 +82,8 @@ class MarketsController < ApplicationController
   end
 
   def view_distances
-    @market=Market.find_by_source_market_id(params[:market_id])
+    @market=Market.find(params[:market_id])
+    @market_distances=MarketDistance.find_all_by_source_market_id(params[:market_id])
   end
+
 end

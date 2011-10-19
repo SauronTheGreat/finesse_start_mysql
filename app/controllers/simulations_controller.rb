@@ -40,6 +40,7 @@ class SimulationsController < ApplicationController
 
   # GET /simulations/1/edit
   def edit
+      @facilitator=Facilitator.find_by_user_id(current_user.id)
     @simulation = Simulation.find(params[:id])
   end
 

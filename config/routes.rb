@@ -1,4 +1,32 @@
 FinesseStartMysql::Application.routes.draw do
+  resources :default_player_data
+
+  resources :players
+
+  resources :player_financials
+
+  resources :imports
+
+  resources :games
+
+  resources :student_group_users
+
+  resources :round_loans
+
+  resources :loan_types
+
+  resources :investment_types
+
+  resources :round_expenses
+
+  resources :employees
+
+  resources :employee_categories
+
+  resources :constants
+
+  resources :round_investments
+
   resources :media_plan_details
 
   resources :media_plans
@@ -109,6 +137,9 @@ FinesseStartMysql::Application.routes.draw do
   match 'details'=>'decision_parameters#view_details'
  match 'view_parameters'=>'products#view_parameters'
   match 'view_expenses'=>'expenses#view_expenses'
+  match 'view_distances'=>'markets#view_distances'
+  match 'initiate_game'=>'games#initiate_game'
+
 
 
 

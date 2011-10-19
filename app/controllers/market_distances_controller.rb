@@ -26,7 +26,28 @@ class MarketDistancesController < ApplicationController
   def new
     @market=Market.find(params[:market_id])
     @count=Market.all.count-1
-    @market_distances=Array.new(@count){MarketDistance.new}
+    #exclude the market whose distance we are setting up
+    @markets=MarketDistance.find_all_by_source_market_id(@market.id)
+    #list all market distances whose source is the current market
+    @count=@count-@markets.count
+    #exclude all those markets
+     @target_markets=Array.new
+    @markets.each do |market_present|
+      @target_markets << market_present.target_market_id
+    end
+    #an array containing all present markets
+
+    @list_of_markets=Market.all.collect { |market|
+            if market!=@market and @target_markets.include?(market.id)==false then
+                [market.name, market.id]
+            else
+                next
+            end }.compact
+
+    #list of all markets whose distance from current market is not known
+
+
+    @market_distances=Array.new(@count) { MarketDistance.new }
     #@market_distance = MarketDistance.new
 
     respond_to do |format|
@@ -43,17 +64,18 @@ class MarketDistancesController < ApplicationController
   # POST /market_distances
   # POST /market_distances.json
   def create
-   # @market_distance = MarketDistance.new(params[:market_distance])
+    # @market_distance = MarketDistance.new(params[:market_distance])
 
-     @market_distances = params[:market_distances].values.collect { |distance| MarketDistance.new(distance) }
+    @market_distances = params[:market_distances].values.collect { |distance| MarketDistance.new(distance) }
 
-       @market_distances.each do |md|
-         md.save!
-       end
+    @market_distances.each do |md|
+      md.save!
+      MarketDistance.make_balancing_distance(md.target_market_id, md.source_market_id, md.distance)
+    end
 
     respond_to do |format|
       if @market_distances.all?(&:valid?)
-        format.html {redirect_to root_path}
+        format.html { redirect_to root_path }
         #format.html { redirect_to @market_distance, notice: 'Market distance was successfully created.' }
         format.json { render json: @market_distance, status: :created, location: @market_distance }
       else

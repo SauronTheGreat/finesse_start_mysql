@@ -11,17 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.select :user_id,User.all.collect{|user|[user.fullname,user.id]} %>
   </div>
   <div class="field">
     <%= f.label :client_id %><br />
-    <%= f.number_field :client_id %>
+    <%= f.select :client_id,Client.all.collect{|client|[client.name,client.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -284,7 +284,7 @@ EXPENSE_OPTIONS:
 
 ROUND_ENVIRONMENTAL_PARAMETER:
 --round_id
---enviornmental_paramenter_id
+--environmental_parameter_id
 
 PRODUCT:
 --name
@@ -324,3 +324,21 @@ There is an impact table
 There is a media plan table which has a name
 There is a media_plan_details table with plan_id,media_id and amount
 The amount is in units and cost can be calculated from media table
+------------------------------------------------------------------------------------------------
+
+EMPLOYEE :
+--efficiency
+--employee_category_id
+--happiness_quotient
+--cost
+--effect_on_quality_cost
+--effect_on_sales
+
+
+
+
+EMPLOYEE_CATEGORY:
+--name
+--base_effect_on_sales
+--base_effect_on_quality_cost
+--base_salary

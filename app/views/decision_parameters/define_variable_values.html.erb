@@ -7,7 +7,7 @@
         <%= f.hidden_field :mathematical_model_variable_id, :value=>@variables[index].id %>
         <%= f.hidden_field :decision_parameter_id, :value=>@decision_parameter.id %>
 
-        <%= f.label "Variable # #{index}" %>
+        <%= f.label @variables[index].variable_name %> =
         <%= f.select :environmental_parameter_id,EnvironmentalParameter.all.collect{|ep|[ep.name,ep.id]} %>
          <br>
         <br>

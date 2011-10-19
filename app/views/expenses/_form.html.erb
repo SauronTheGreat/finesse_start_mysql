@@ -13,14 +13,18 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name,:disabled=>true %>
+    <%= f.text_field :name %>
   </div>
+
 
 <div class="field">
     <%= f.label :number_of_options %><br />
     <%= f.text_field :number_of_options %>
   </div>
-
+<div>
+  <%= f.label :expense_type_id %> <br>
+  <%= f.select :expense_type_id,ExpenseType.all.collect{|expense_type|[expense_type.name,expense_type.id]} %>
+</div>
 
   <div class="actions">
     <%= f.submit %>

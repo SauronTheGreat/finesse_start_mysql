@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017054816) do
+ActiveRecord::Schema.define(:version => 20111019103810) do
 
   create_table "brand_selection_parameters", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.string   "client_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "constants", :force => true do |t|
+    t.string   "name"
+    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,8 +71,6 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.integer  "personal_taste"
     t.integer  "final_decision"
     t.integer  "probability_of_purchase"
-    t.integer  "media_preference"
-    t.integer  "media_impact"
     t.integer  "brand_power"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -104,6 +109,50 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.string   "name"
   end
 
+  create_table "default_player_data", :force => true do |t|
+    t.integer  "income"
+    t.integer  "cogs"
+    t.integer  "employee_cost"
+    t.integer  "sga"
+    t.integer  "ebitda"
+    t.integer  "interest"
+    t.integer  "investment_income"
+    t.integer  "depreciation"
+    t.integer  "pbt"
+    t.integer  "tax"
+    t.integer  "pat"
+    t.integer  "long_term_loans"
+    t.integer  "short_term_loans"
+    t.integer  "net_worth"
+    t.integer  "fixed_assets"
+    t.integer  "investments"
+    t.integer  "inventory"
+    t.integer  "cash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employee_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "base_effect_on_sales"
+    t.integer  "base_salary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "base_effect_on_quality_cost"
+  end
+
+  create_table "employees", :force => true do |t|
+    t.integer  "employee_category_id"
+    t.integer  "efficiency"
+    t.integer  "happiness_quotient"
+    t.integer  "cost"
+    t.integer  "effect_on_quality_cost"
+    t.integer  "effect_on_sales"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "factory_id"
+  end
+
   create_table "environmental_parameters", :force => true do |t|
     t.string   "name"
     t.integer  "value"
@@ -135,7 +184,7 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
   end
 
   create_table "facilitator_groups", :force => true do |t|
-    t.integer  "facilitator_group_id"
+    t.integer  "facilitator_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -161,6 +210,14 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.datetime "updated_at"
   end
 
+  create_table "games", :force => true do |t|
+    t.integer  "simulation_id"
+    t.integer  "student_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "facilitator_id"
+  end
+
   create_table "hrincentives", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -173,18 +230,38 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.datetime "updated_at"
   end
 
+  create_table "imports", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "excel_list_file_name"
+    t.string   "excel_list_content_type"
+    t.integer  "excel_list_file_size"
+    t.datetime "excel_list_updated_at"
+  end
+
+  create_table "investment_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "investments", :force => true do |t|
     t.string   "name"
-    t.string   "type"
-    t.integer  "roi"
+    t.string   "investment_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "loan_types", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "loans", :force => true do |t|
-    t.string   "type"
-    t.integer  "tenure"
-    t.integer  "interest_rate"
+    t.string   "name"
+    t.integer  "loan_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -211,6 +288,7 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.integer  "catchment_of_vendors"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "no_of_consumers"
   end
 
   create_table "mathematical_model_constant_values", :force => true do |t|
@@ -282,6 +360,31 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.datetime "updated_at"
   end
 
+  create_table "player_financials", :force => true do |t|
+    t.integer  "round_id"
+    t.integer  "player_id"
+    t.integer  "income"
+    t.integer  "cogs"
+    t.integer  "employee_cost"
+    t.integer  "sga"
+    t.integer  "ebitda"
+    t.integer  "interest"
+    t.integer  "investment_income"
+    t.integer  "depreciation"
+    t.integer  "pbt"
+    t.integer  "tax"
+    t.integer  "pat"
+    t.integer  "long_term_loans"
+    t.integer  "short_term_loans"
+    t.integer  "net_worth"
+    t.integer  "fixed_assets"
+    t.integer  "investments"
+    t.integer  "inventory"
+    t.integer  "cash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "player_investments", :force => true do |t|
     t.integer  "player_id"
     t.integer  "investment_id"
@@ -294,6 +397,13 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.integer  "player_id"
     t.integer  "loan_id"
     t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "players", :force => true do |t|
+    t.integer  "student_group_user_id"
+    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -320,17 +430,44 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
   end
 
   create_table "round_environmental_parameters", :force => true do |t|
-    t.integer  "round"
+    t.integer  "round_id"
     t.integer  "environmental_parameter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "amount"
+  end
+
+  create_table "round_expenses", :force => true do |t|
+    t.integer  "round_id"
+    t.integer  "expense_id"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "round_investments", :force => true do |t|
+    t.integer  "investment_id"
+    t.integer  "mu"
+    t.integer  "sigma"
+    t.integer  "roi"
+    t.integer  "round_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "round_loans", :force => true do |t|
+    t.integer  "round_id"
+    t.integer  "loan_id"
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "rounds", :force => true do |t|
-    t.string   "name"
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "simulation_id"
   end
 
   create_table "simulation_decision_parameters", :force => true do |t|
@@ -358,6 +495,13 @@ ActiveRecord::Schema.define(:version => 20111017054816) do
     t.integer  "weight_per_unit"
     t.integer  "product_id"
     t.integer  "case_study_id"
+  end
+
+  create_table "student_group_users", :force => true do |t|
+    t.integer  "student_group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "student_groups", :force => true do |t|

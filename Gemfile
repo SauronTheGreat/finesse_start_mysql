@@ -7,6 +7,8 @@ gem 'rails', '3.1.1.rc2'
 
 gem 'mysql2'
 gem 'devise'
+gem 'paperclip'
+gem 'spreadsheet'
 
 
 # Gems used only for assets and not required

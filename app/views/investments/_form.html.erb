@@ -16,13 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :investment_type_id %><br />
+    <%= f.select :investment_type_id,InvestmentType.all.collect{|type|[type.name,type.id]} %>
   </div>
-  <div class="field">
-    <%= f.label :roi %><br />
-    <%= f.number_field :roi %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
