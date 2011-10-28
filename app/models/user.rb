@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
       @user.superadmin=row[5]
       @user.admin=row[6]
       @user.facilitator=row[7]
+      @user.student=row[8]
       @user.save!
 
 

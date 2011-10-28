@@ -1,4 +1,16 @@
 FinesseStartMysql::Application.routes.draw do
+  resources :brands
+
+  resources :player_round_factories
+
+  resources :round_media_plans
+
+  resources :player_round_loans
+
+  resources :player_round_investments
+
+  resources :player_round_expenses
+
   resources :default_player_data
 
   resources :players
@@ -139,6 +151,9 @@ FinesseStartMysql::Application.routes.draw do
   match 'view_expenses'=>'expenses#view_expenses'
   match 'view_distances'=>'markets#view_distances'
   match 'initiate_game'=>'games#initiate_game'
+  match "get_student_group"=>'simulations#get_student_group'
+match "set_student_group"=>'simulations#set_student_group'
+  match 'initiate_simulation'=>'simulations#initiate_simulation'
 
 
 

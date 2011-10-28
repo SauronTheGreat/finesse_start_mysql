@@ -8,6 +8,7 @@ As a SUPERADMIN
 --I should be able to define formulae to be used for relation between enviornmental_paramenters and decision parameters
 --I should be able to define distances between markets
 
+
 -As a STUDENT
 --I should be able to login
 --I should be able to download round 1 default data sheets
@@ -60,6 +61,7 @@ Decision examples:
 --I should be able to define product parameter values for the product in the simulation
 --I should be able to define consumer_category proportions in the market
 --I should be able to decide maxplayers(maximum players playing !)
+
 
 
 ENVIRONMENTAL PARAMETERS

@@ -15,6 +15,7 @@ class ConsumerCategoriesController < ApplicationController
   def show
     @consumer_category = ConsumerCategory.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @consumer_category }

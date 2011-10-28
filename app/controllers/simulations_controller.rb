@@ -40,7 +40,7 @@ class SimulationsController < ApplicationController
 
   # GET /simulations/1/edit
   def edit
-      @facilitator=Facilitator.find_by_user_id(current_user.id)
+    @facilitator=Facilitator.find_by_user_id(current_user.id)
     @simulation = Simulation.find(params[:id])
   end
 
@@ -86,5 +86,30 @@ class SimulationsController < ApplicationController
       format.html { redirect_to simulations_url }
       format.json { head :ok }
     end
+  end
+
+  def get_student_group
+    @simulation=Simulation.find(params[:simulation_id])
+    @student_groups=StudentGroup.all.collect { |sg| [sg.name, sg.id] }
+
+  end
+
+  def set_student_group
+    @simulation=Simulation.find(params[:simulation_id])
+    @simulation.student_group_id=params[:student_group_id]
+    @simulation.save!
+    redirect_to root_path
+  end
+
+  def initiate_simulation
+    @simulation=Simulation.find(params[:simulation_id])
+    @markets=@simulation.simulation_markets
+    @markets.each do |market|
+      Dealer.create_dealers_of_world(market.market_id)
+      Consumer.create_consumers_from_dealers(market.market_id)
+      Vendor.create_vendors_from_market(market.market_id,@simulation.id)
+    end
+    Player.create_players_from_student_group(@simulation.id)
+
   end
 end

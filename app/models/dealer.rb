@@ -1,6 +1,7 @@
 class Dealer < ActiveRecord::Base
 
   belongs_to :market
+  has_many :dealer_preferences,:dependent => :destroy
 
   #we have to write a method which will be invoked to create dealers for each market , when game is initiated
 
@@ -30,6 +31,7 @@ class Dealer < ActiveRecord::Base
       @dealer.catchment_of_consumers=consumer_per_dealer
       @dealer.dealer_category_id=@category.id
       @dealer.save!
+      DealerPreferences.populate_dealer_preferences(@dealer.id)
 
     end
 

@@ -30,7 +30,7 @@ class RoundEnvironmentalParametersController < ApplicationController
     @included_parameters=@round.round_environmental_parameters
     @included_parameters_ids=Array.new
     @included_parameters.each do |parameter|
-      @included_parameters_ids << parameter.id
+      @included_parameters_ids << parameter.environmental_parameter_id
     end
 
     @environmental_parameter_list=EnvironmentalParameter.all.collect{|parameter| if @included_parameters_ids.include?(parameter.id)==false then [parameter.name,parameter.id] end}.compact

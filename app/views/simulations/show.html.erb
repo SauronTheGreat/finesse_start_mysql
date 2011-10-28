@@ -83,6 +83,8 @@
 <%= link_to 'Back', simulations_path %> |
 
 <%= link_to 'Set Markets', new_simulation_market_path(:simulation_id=>@simulation.id) %>|
-<%= link_to 'Set Decision Parameters', new_simulation_decision_parameter_path(:simulation_id=>@simulation.id) %>
-<%= link_to "Proceed for Round Data Population",rounds_path(:simulation_id=>@simulation.id) %>
+<%= link_to 'Set Decision Parameters', new_simulation_decision_parameter_path(:simulation_id=>@simulation.id) %>|
+<%= link_to "Proceed for Round Data Population",rounds_path(:simulation_id=>@simulation.id) %>|
+<%= link_to "Set Student Group",get_student_group_path(:simulation_id=>@simulation.id) %>  |
+<%= link_to "Initiate Simulation",initiate_simulation_path(:simulation_id=>@simulation.id) %>
 

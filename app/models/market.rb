@@ -1,6 +1,7 @@
 class Market < ActiveRecord::Base
 
   has_many :dealers  ,:dependent => :destroy
+  belongs_to :simulation
 
   before_save :populate_local_dealers
   before_update :populate_local_dealers

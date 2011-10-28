@@ -57,7 +57,7 @@
 
   <ul>
     <% @included_parameters.each do |parameter| %>
-    <li><%= EnvironmentalParameter.find(parameter.id).name %></li>
+    <li><%= EnvironmentalParameter.find(parameter.environmental_parameter_id).name %></li>
     <% end %>
     </ul>
 

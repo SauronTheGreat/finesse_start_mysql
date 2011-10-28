@@ -11,10 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019103810) do
+ActiveRecord::Schema.define(:version => 20111025095515) do
+
+  create_table "active_rounds", :force => true do |t|
+    t.integer  "round_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "simulation_id"
+  end
 
   create_table "brand_selection_parameters", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "brands", :force => true do |t|
+    t.integer  "player_id"
+    t.string   "name"
+    t.integer  "price_per_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20111019103810) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "price_range"
+    t.text     "personal_taste_range"
+    t.text     "dealer_push_range"
+    t.text     "media_push_range"
   end
 
   create_table "consumer_media_preferences", :force => true do |t|
@@ -68,16 +87,28 @@ ActiveRecord::Schema.define(:version => 20111019103810) do
   create_table "consumers", :force => true do |t|
     t.integer  "consumer_category_id"
     t.integer  "dealer_id"
-    t.integer  "personal_taste"
+    t.integer  "personal_taste_index"
     t.integer  "final_decision"
     t.integer  "probability_of_purchase"
     t.integer  "brand_power"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_id"
+    t.integer  "price_index"
+    t.integer  "dealer_push_index"
+    t.integer  "media_push_index"
   end
 
   create_table "dealer_categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dealer_preferences", :force => true do |t|
+    t.integer  "dealer_id"
+    t.integer  "expense_id"
+    t.integer  "index"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -401,11 +432,51 @@ ActiveRecord::Schema.define(:version => 20111019103810) do
     t.datetime "updated_at"
   end
 
-  create_table "players", :force => true do |t|
-    t.integer  "student_group_user_id"
-    t.integer  "game_id"
+  create_table "player_round_expenses", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "round_id"
+    t.integer  "expense_id"
+    t.integer  "expense_option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_id"
+  end
+
+  create_table "player_round_factories", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "round_id"
+    t.integer  "factory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "brand_id"
+  end
+
+  create_table "player_round_investments", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "round_id"
+    t.integer  "investment_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "brand_id"
+  end
+
+  create_table "player_round_loans", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "round_id"
+    t.integer  "loan_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "brand_id"
+  end
+
+  create_table "players", :force => true do |t|
+    t.integer  "student_group_user_id"
+    t.integer  "simulation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "student_group_id"
   end
 
   create_table "product_parameters", :force => true do |t|
@@ -463,6 +534,13 @@ ActiveRecord::Schema.define(:version => 20111019103810) do
     t.datetime "updated_at"
   end
 
+  create_table "round_media_plans", :force => true do |t|
+    t.integer  "round_id"
+    t.integer  "media_plan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rounds", :force => true do |t|
     t.integer  "number"
     t.datetime "created_at"
@@ -495,6 +573,7 @@ ActiveRecord::Schema.define(:version => 20111019103810) do
     t.integer  "weight_per_unit"
     t.integer  "product_id"
     t.integer  "case_study_id"
+    t.integer  "student_group_id"
   end
 
   create_table "student_group_users", :force => true do |t|
@@ -537,6 +616,7 @@ ActiveRecord::Schema.define(:version => 20111019103810) do
     t.boolean  "admin"
     t.boolean  "superadmin"
     t.boolean  "facilitator"
+    t.boolean  "student"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

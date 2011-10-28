@@ -44,6 +44,8 @@
 
 
 
+
+
         <!--admin view-->
     <% elsif current_user.admin %>
         <%= link_to "Manage Clients", clients_path %><br>
@@ -57,7 +59,7 @@
         <%= link_to "Manage Investments", investments_path %><br>
         <%= link_to "Manage Loans", loans_path %><br>
         <%= link_to "Mass Upload Users", imports_path %><br>
-        <%= link_to "Default Player Data",new_default_player_datum_path %>
+        <%= link_to "Default Player Data", new_default_player_datum_path %>
 
 
 
@@ -73,15 +75,26 @@
         <%= link_to "Manage Games", games_path %>
 
 
+        <!--player view-->
 
+    <% elsif current_user.student %>
+        <p>There are simulations assigned to you...</p>
 
+        <ul>
+          <% @simulations.each_with_index do |simulation, index| %>
 
+              <li><%= simulation.name %> <%=link_to  "View Brands",brands_path(:player_id=> @players[index].id) %>
+
+          <% end %>
+        </ul>
 
 
 
 
     <% end %>
 <% end %>
+
+
 
 
 

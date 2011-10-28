@@ -5,6 +5,7 @@ class Round < ActiveRecord::Base
   has_many :round_environmental_parameters, :dependent => :destroy
   has_many :round_investments, :dependent => :destroy
   has_many :round_loans,:dependent => :destroy
+  has_many :round_media_plans,:dependent => :destroy
 
   #this method creates the number of rounds, specified in the simulation
   def self.create_rounds(simulation_id)

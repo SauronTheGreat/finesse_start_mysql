@@ -1,0 +1,24 @@
+
+
+This is a simple file that list the sequence of events
+
+
+WHEN A PRODUCT IS CREATED:
+--the user is asked to give product parameters
+
+
+WHEN A SIMULATION IS CREATED:
+--initialize rounds using max_rounds field and prompt the user to enter round specific data.
+--for each round, select round expenses,loans and investments and environmental parameters
+--select decision parameters used for a simulation
+--for each simulation select markets which are to be included in the simulation
+
+
+WHEN A SIMULATION IS CREATED:
+--initialize the dealers (invoke the function created in the dealer model)
+--initialize the consumers (invoke function in consumer model)
+--initialize vendors (this is done when simulation_markets are created)
+  (vendor has to be discussed)
+
+
+
